@@ -65,23 +65,8 @@ def get_longest_progression(f):
 
 
 def get_all_progressions():
-    progressions = []
-
     with open("../midi/dance/paths.txt") as f:
         for line in f:
-            progressions.append(get_longest_progression(os.path.normpath("../midi/" + line.strip())))
-
-    return progressions
+            yield get_longest_progression(os.path.normpath("../midi/" + line.strip()))
 
 
-#file = "../midi/dance/darude/Sandstorm.mid"
-#(comp, bpm) = get_composition(file)
-#
-#fluidsynth.init("../soundfonts/soundfont.sf2", "alsa")
-#
-#fluidsynth.play_Composition(comp, None, bpm)
-
-#f = "./prog.mid"
-#f = "../midi/dance/darude/Sandstorm.mid"
-
-print get_all_progressions()
