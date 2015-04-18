@@ -1,1 +1,2 @@
-mingus
+git+https://github.com/artdent/mingus-python3mingus.git@python3
+
