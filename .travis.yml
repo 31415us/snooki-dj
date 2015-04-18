@@ -8,4 +8,4 @@ before_script:
 
 script:
     - pip install -r requirements.txt
-    - python -m unittest snooki/tests/*.py
+    - python -m unittest discover
