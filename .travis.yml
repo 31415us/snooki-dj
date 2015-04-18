@@ -10,3 +10,6 @@ before_script:
 script:
     - pip install -r requirements.txt
     - python -m unittest discover
+
+notifications:
+    email: false
