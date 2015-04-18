@@ -1,0 +1,47 @@
+from mingus.midi.MidiFileIn import MIDI_to_Composition
+from mingus.containers import Composition
+
+
+def get_composition(file):
+    try:
+        return MIDI_to_Composition(file)
+    except Exception as e:
+        print (e)
+        print ("Could not load midi file: " + file)
+
+
+def get_tracks(composition):
+    return composition.tracks
+
+def get_progression(track):
+    progression = []
+    prev_chord = None
+    chord_counter = 0
+
+    for bar in track.bars:
+        raw_progression = bar.determine_chords()
+
+        for raw_chord in raw_progression:
+            if len(raw_chord[1]) > 0 and raw_chord[1][0][0].isupper() and len(raw_chord[1][0]) > 1:
+                if prev_chord is None or prev_chord == raw_chord[1][0]:
+                    if prev_chord is None:
+                        prev_chord = raw_chord[1][0]
+
+                    chord_counter += 1
+                else:
+                    progression.append((prev_chord, chord_counter))
+                    prev_chord = raw_chord[1][0]
+                    chord_counter = 1
+
+    if chord_counter == 1:
+        progression.append((prev_chord, chord_counter))
+
+    return progression
+
+
+file = "../midi/dance/darude/Sandstorm.mid"
+#file = "prog.mid"
+composition = get_composition(file)
+tracks = get_tracks(composition[0])
+for t in tracks:
+    print get_progression(t)
