@@ -31,7 +31,7 @@ class MarkovChain(object):
         for n in self.neighbours[state]:
             b_count = self.bigram_count[(state, n)]
             weights += b_count
-            probas[n] = b_count
+            probas[n] = float(b_count)
 
         for n in probas:
             probas[n] /= weights
@@ -42,7 +42,7 @@ class MarkovChain(object):
 
         for n in probas:
             acc += probas[n]
-            if acc < r:
+            if r < acc:
                 return n
 
         return state
