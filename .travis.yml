@@ -9,6 +9,7 @@ env:
 before_install:
 
 before_script:
+    - sudo apt-get install swig
 
 script:
     - pip install -r requirements.txt
