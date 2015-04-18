@@ -34,7 +34,7 @@ class MarkovChain(object):
             probas[n] = b_count
 
         for n in probas:
-            proba[n] /= weights
+            probas[n] /= weights
 
         r = random()
 
