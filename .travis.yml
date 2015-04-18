@@ -4,10 +4,12 @@ python:
     - "3.2"
     - "3.3"
 
+env:
+
 before_install:
 
 before_script:
 
 script:
     - pip install -r requirements.txt
-    - python -m unittest discover
+    - python -m unittest ./tests
