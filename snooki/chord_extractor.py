@@ -9,5 +9,5 @@ def get_composition(file):
         print ("Could not load midi file: " + file)
 
 
-file = "./midi/dance/darude/Sandstorm.mid"
+file = "../midi/dance/darude/Sandstorm.mid"
 get_composition(file)
