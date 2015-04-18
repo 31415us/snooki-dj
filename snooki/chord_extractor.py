@@ -60,8 +60,8 @@ def get_longest_progression(f):
 def get_all_progressions():
     progressions = []
 
-    with open("../dance/paths.txt") as f:
-        progressions.append(get_longest_progression(f.readline()))
+    with open("../midi/dance/paths.txt") as f:
+        progressions.append(get_longest_progression("../midi/" + f.readline()))
 
     return progressions
 
@@ -75,4 +75,5 @@ def get_all_progressions():
 
 #f = "./prog.mid"
 #f = "../midi/dance/darude/Sandstorm.mid"
+
 print get_all_progressions()
