@@ -1,2 +1,2 @@
-git+https://github.com/artdent/mingus-python3mingus.git@python3
+git+https://github.com/artdent/mingus-python3.git@python3
 
