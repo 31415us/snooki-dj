@@ -58,16 +58,16 @@ def get_longest_progression(f):
             if len(p) > max:
                 max_progression = p
 
-        prev_progression = max_progression[0]
-        count = max_progression[1]
+        prev_progression = max_progression[0][0]
+        count = max_progression[0][1]
         progression = []
 
         for p in max_progression[1:]:
-            if prev_progression[0] == p[0]:
+            if prev_progression == p[0]:
                 count += p[1]
             else:
-                progression.append((prev_progress[0], count))
-                prev_progression = p
+                progression.append((prev_progression, count))
+                prev_progression = p[0]
                 count = p[1]
 
         return progression
