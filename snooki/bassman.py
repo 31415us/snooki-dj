@@ -5,21 +5,23 @@ from mingus.containers.NoteContainer import NoteContainer
 
 import mingus.core.chords as chords
 
-from random import random
+import random
 
 def bassline(chord, beat_probas):
 
-    bass_note = chords.from_shorthand(chord)[0]
+    chord_tones = chords.from_shorthand(chord)
     octave = 2
-
-    note = Note(bass_note, octave)
 
     b = Bar()
 
-    for beat_p in beat_probas:
-        p = random()
-        if p < beat_p:
-            b.place_notes(note, 8)
+    for (bass, els, octa) in beat_probas:
+        p = random.random()
+        if p < bass:
+            b.place_notes(Note(chord_tones[0], octave), 8)
+        elif p < bass + els:
+            b.place_notes(Note(random.choice(chord_tones[1:]), octave), 8)
+        elif p < bass + els + octa:
+            b.place_notes(Note(chord_tones[0], octave + 1), 8)
         else:
             b.place_rest(8)
 
