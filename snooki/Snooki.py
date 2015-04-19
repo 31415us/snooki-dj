@@ -15,8 +15,13 @@ from mingus.midi import fluidsynth
 
 class Snooki(object):
 
-    def __init__(self):
-        fluidsynth.init('../soundfonts/soundfont.sf2', 'alsa')
+    def __init__(self, soundfont_name=None):
+
+        if soundfont_name is None:
+            fluidsynth.init('../soundfonts/soundfont.sf2', 'alsa')
+        else:
+            fluidsynth.init(soundfont_name, 'alsa')
+
         self.m_chain = MarkovChain(get_all_progressions())
         self.sim = self.m_chain.infinite_progression()
 
