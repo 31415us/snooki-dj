@@ -18,7 +18,11 @@ class Snooki(object):
         self.m_chain = MarkovChain(get_all_progressions())
         self.sim = self.m_chain.infinite_progression()
 
-        self.bassproba = [0.9, 0.3, 0.6, 0.3, 0.9, 0.3, 0.6, 0.3]
+        down1 = (0.7, 0.05, 0.2)
+        down2 = (0.2, 0.05, 0.7)
+        off = (0.0, 0.4, 0.1)
+
+        self.bassproba = [down1, off, down2, off, down1, off, down2, off]
 
     def _next_bar(self):
         prev = None
