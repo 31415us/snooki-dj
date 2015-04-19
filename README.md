@@ -8,6 +8,13 @@ Our entry for the 2015 Facebook hackathon at EPFL
 snooki-dj is a small proof of concept implementation for procedural music
 generation
 
+# Motivation
+
+As we all know famous djs such as Snooki or Paris cost a lot and "produce" less than
+average music. That's why we created a music generator that will help the earthlings
+replace these overpriced "artists". Our app will provide strength for the
+restoring music on planet earth and make the world a better place.
+
 # How it works
 
 At the moment snooki creates 3 simultaneous tracks, Drum, Bass and Harmony. For the harmony
