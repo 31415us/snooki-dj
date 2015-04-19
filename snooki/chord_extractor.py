@@ -30,7 +30,7 @@ def get_longest_progression(f):
                     if len(notes) > 2:
                         if curr_chord is not None:
                             progression.append((curr_chord, chord_length))
-                            curr_chord = NoteContainer(notes).determine()
+                            curr_chord = NoteContainer(notes).determine(shorthand=True)
 
                             if len(curr_chord) != 0 and curr_chord[0][0].isupper():
                                 curr_chord = curr_chord[0]
@@ -40,7 +40,7 @@ def get_longest_progression(f):
 
                             chord_length = 1
                         else:
-                            curr_chord = NoteContainer(notes).determine()
+                            curr_chord = NoteContainer(notes).determine(shorthand=True)
 
                             if len(curr_chord) != 0 and curr_chord[0][0].isupper():
                                 curr_chord = curr_chord[0]
