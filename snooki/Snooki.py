@@ -13,6 +13,8 @@ from mingus.containers.Bar import Bar
 from mingus.containers.NoteContainer import NoteContainer
 from mingus.midi import fluidsynth
 
+from visualizer import next
+
 class Snooki(object):
 
     def __init__(self):
@@ -40,6 +42,8 @@ class Snooki(object):
             chord_bar + NoteContainer(nxt_voiced)
 
             chord_bar[0][1] = 1
+
+            next(next_chord)
 
             yield (chord_bar, bassline(nxt_chord, self.bassproba), drum_beat(self.bassproba))
 
