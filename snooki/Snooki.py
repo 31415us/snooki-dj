@@ -26,7 +26,7 @@ class Snooki(object):
 
         self.bassproba = [down1, off, down2, off, down1, off, down2, off]
 
-        self.current = None
+        self.current = self.m_chain.START
 
     def _next_bar(self):
         prev = None
