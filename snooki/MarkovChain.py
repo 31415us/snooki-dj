@@ -18,9 +18,10 @@ class MarkovChain(object):
 
         prev = self.START
 
+        self.nodes.add(self.START)
 
         for (chord, repetitions) in seq:
-            self.nodes.add(prev)
+            self.nodes.add(chord)
             self.bigram_count[(prev, chord)] += 1
             self.neighbours[prev].add(chord)
             prev = chord

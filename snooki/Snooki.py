@@ -41,6 +41,7 @@ class Snooki(object):
     def play(self):
         fluidsynth.set_instrument(1, 73) # chords
         fluidsynth.set_instrument(2, 32) # bass
+        fluidsynth.main_volume(1, 50)
         fluidsynth.main_volume(2, 100)
         for bars in self._next_bar():
             fluidsynth.play_Bars(bars, [1, 2], 110)
