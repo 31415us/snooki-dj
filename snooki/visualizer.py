@@ -7,15 +7,15 @@ from MarkovChain import *
 from chord_extractor import *
 import Tkinter as Tk
 import time
+from Snooki import Snooki
 
 
-def create_graph():
+def create_graph(m):
     g = nx.Graph()
 
     bla = [[('a', 2), ('b', 3)], [('a', 10), ('c', 2)]]
 
-    #m = MarkovChain(get_all_progressions())
-    m = MarkovChain(bla)
+    #m = MarkovChain(bla)
 
     nodes_dict = {}
     nodes = list(m.nodes)
@@ -47,13 +47,14 @@ def create_graph():
 
     return (g, nodes_dict)
             
+s = Snooki()
+g = create_graph(s.m_chain)
+nodes_dict = g[1]
+g = g[0]
+
 root = Tk.Tk()
 root.wm_title("Markov Chain")
 root.wm_protocol('WM_DELETE_WINDOW', root.quit())
-
-g = create_graph()
-nodes_dict = g[1]
-g = g[0]
 
 pos = nx.circular_layout(g)
 
@@ -82,6 +83,12 @@ def next(node):
     a.set_ylim(ylim)
     plt.axis('off')
     canvas.draw()
+
+def play():
+    s.play()
+
+b = Tk.Button(root, text="Play",command=play)
+b.pack()
 
 Tk.mainloop()
 
