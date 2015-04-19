@@ -35,6 +35,6 @@ class Snooki(object):
 
 
     def play(self):
-        fluidsynth.set_instrument(1, 70)
+        fluidsynth.set_instrument(1, 73)
         for b in self._next_bar():
             fluidsynth.play_Bar(b, 1, 110)

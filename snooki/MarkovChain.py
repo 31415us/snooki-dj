@@ -9,6 +9,7 @@ class MarkovChain(object):
     def __init__(self, sequences):
         self.bigram_count = defaultdict(int)
         self.neighbours = defaultdict(set)
+        self.nodes = set()
 
         for seq in sequences:
             self._seq_to_bigrams(seq)
@@ -17,7 +18,9 @@ class MarkovChain(object):
 
         prev = self.START
 
+
         for (chord, repetitions) in seq:
+            self.nodes.add(prev)
             self.bigram_count[(prev, chord)] += 1
             self.neighbours[prev].add(chord)
             prev = chord
