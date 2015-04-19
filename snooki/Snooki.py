@@ -13,8 +13,6 @@ from mingus.containers.Bar import Bar
 from mingus.containers.NoteContainer import NoteContainer
 from mingus.midi import fluidsynth
 
-from visualizer import next
-
 class Snooki(object):
 
     def __init__(self):
@@ -27,6 +25,8 @@ class Snooki(object):
         off = (0.0, 0.4, 0.1)
 
         self.bassproba = [down1, off, down2, off, down1, off, down2, off]
+
+        self.current = None
 
     def _next_bar(self):
         prev = None
@@ -43,7 +43,7 @@ class Snooki(object):
 
             chord_bar[0][1] = 1
 
-            next(next_chord)
+            self.current = nxt_chord
 
             yield (chord_bar, bassline(nxt_chord, self.bassproba), drum_beat(self.bassproba))
 
@@ -57,3 +57,4 @@ class Snooki(object):
         fluidsynth.main_volume(3, 30)
         for bars in self._next_bar():
             fluidsynth.play_Bars(bars, [1, 2, 3], 110)
+            yield self.current
