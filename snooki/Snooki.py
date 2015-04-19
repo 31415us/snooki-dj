@@ -7,6 +7,8 @@ from voicing import voice
 
 from bassman import bassline
 
+from drummer import drum_beat
+
 from mingus.containers.Bar import Bar
 from mingus.containers.NoteContainer import NoteContainer
 from mingus.midi import fluidsynth
@@ -39,13 +41,15 @@ class Snooki(object):
 
             chord_bar[0][1] = 1
 
-            yield (chord_bar, bassline(nxt_chord, self.bassproba))
+            yield (chord_bar, bassline(nxt_chord, self.bassproba), drum_beat(self.bassproba))
 
 
     def play(self):
         fluidsynth.set_instrument(1, 73) # chords
         fluidsynth.set_instrument(2, 32) # bass
+        fluidsynth.set_instrument(3, 1, 128) # drums
         fluidsynth.main_volume(1, 50)
         fluidsynth.main_volume(2, 100)
+        fluidsynth.main_volume(3, 30)
         for bars in self._next_bar():
-            fluidsynth.play_Bars(bars, [1, 2], 110)
+            fluidsynth.play_Bars(bars, [1, 2, 3], 110)
